@@ -1,0 +1,9 @@
+dependencies:
+  - name: d3.js
+    version: 3.5.5
+    src: htmlwidgets/lib
+    script: d3.min.js
+  - name: dimple
+    version: 2.1.2
+    src: htmlwidgets/lib
+    script: dimple.v2.1.2.min.js

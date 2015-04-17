@@ -1,0 +1,221 @@
+---
+title: ''
+output: html_document
+---
+
+
+
+```{r}
+library(dimple)
+head(sales[,1:5])
+```
+
+# Chart Types
+
+## Bar Charts
+
+### Vertical Bar
+
+```{r}
+dimple(sales, xCategory="Month", xOrderRule="Date", yMeasure="Unit.Sales")
+```
+
+### Vertical Stacked Bar
+
+```{r}
+dimple(sales, xCategory="Month", xOrderRule="Date", yMeasure="Unit.Sales", series="Channel")
+```
+
+### Vertical 100% Bar
+
+```{r}
+dimple(sales, xCategory="Month", xOrderRule="Date", yPct="Unit.Sales", series="Channel")
+```
+
+### Vertical Grouped Bar
+
+```{r}
+dimple(sales, xCategory=c("Price.Tier", "Channel"), yMeasure="Unit.Sales")
+```
+
+### Vertical Stacked Grouped Bar
+
+```{r}
+dimple(sales, xCategory=c("Price.Tier", "Channel"), yMeasure="Unit.Sales", series="Owner", legend=TRUE)
+```
+
+### Vertical 100% Grouped Bar
+
+```{r}
+dimple(sales, xCategory=c("Price.Tier", "Channel"), yPct="Unit.Sales", series="Owner", legend=TRUE)
+```
+
+### Horizontal Bar
+
+```{r}
+dimple(sales, yCategory="Month", yOrderRule="Date", xMeasure="Unit.Sales")
+```
+
+### Horizontal Stacked Bar
+
+```{r}
+dimple(sales, yCategory="Month", yOrderRule="Date", xMeasure="Unit.Sales", series="Channel")
+```
+
+### Horizontal Stacked Bar
+
+```{r}
+dimple(sales, yCategory="Month", yOrderRule="Date", xPct="Unit.Sales", series="Channel")
+```
+
+
+### Block Matrix
+
+```{r}
+dimple(sales, xCategory=c("Channel", "Price.Tier"), yCategory="Owner", series="Price.Tier", legend=TRUE)
+```
+
+### Horizontal Floating Bars
+
+```{r}
+dimple(sales, xMeasure="Unit.Sales", yCategory="Month", yOrderRule="Date", series="Channel", stacked = FALSE, legend=TRUE)
+```
+
+### Floating Bars
+
+```{r}
+partial_data <-
+  subset(sales, Month == "Dec-11")
+
+dimple(partial_data, xMeasure="Price.Monthly.Change", yMeasure="Distribution.Monthly.Change", yOrderRule="Date", series=c("SKU","Channel"), stacked = FALSE, legend=TRUE)
+```
+
+## Pie Charts
+
+### Pie Chart
+
+```{r}
+dimple(sales, pMeasure="Unit.Sales", series="Owner", legend=TRUE, chartType="pie")
+```
+
+### Pie Matrix
+
+```{r}
+dimple(sales, xCategory="Price.Tier", yCategory="Pack.Size", pMeasure="Unit.Sales", series="Owner", legend=TRUE, chartType="pie", piesRadius = 25)
+```
+
+### Scatter Pie
+
+```{r}
+partial_data <-
+  subset(sales, Date == "01/12/2012")
+
+dimple(partial_data, xMeasure="Price.Monthly.Change", yMeasure="Unit.Sales.Monthly.Change", pMeasure="Operating.Profit", series=c("Owner","Channel"), legend=TRUE, chartType="pie", piesRadius = 20)
+```
+
+## Scatter Charts
+
+### Scatter
+
+```{r}
+partial_data <-
+  subset(sales, Date == "01/12/2012")
+
+dimple(partial_data, xMeasure="Unit.Sales", yMeasure="Operating.Profit", series=c("SKU","Channel"), legend=TRUE, chartType="bubble")
+```
+
+### Vertical Lollipop
+
+```{r}
+dimple(sales, xCategory="Month", xOrderRule = "Date", yMeasure="Unit.Sales", series="Channel", legend=TRUE, chartType="bubble")
+```
+
+## Bubble Charts
+
+### Bubble
+
+```{r}
+partial_data <-
+  subset(sales, Date == "01/12/2012")
+
+dimple(partial_data, xMeasure="Unit.Sales.Monthly.Change", yMeasure="Price.Monthly.Change", zMeasure="Operating.Profit", series=c("SKU","Channel"), legend=TRUE, chartType="bubble")
+```
+
+### Bubble Matrix
+
+```{r}
+dimple(sales, xCategory=c("Channel","Price.Tier"), yCategory="Owner", zMeasure="Distribution", series="Price.Tier", legend=TRUE, chartType="bubble", seriesAggregate = "max", zOverrideMax = 200)
+```
+
+## Area Charts
+
+### Area
+
+```{r}
+dimple(sales, xCategory="Month", xOrderRule = "Date", yMeasure="Unit.Sales", chartType="area")
+```
+
+### Stacked Area
+
+```{r}
+partial_data <-
+  subset(sales, Owner %in% c("Aperture","Black Mesa"))
+
+dimple(partial_data, xCategory="Month", xOrderRule = "Date", yMeasure="Unit.Sales", series="Channel", chartType="area", legend=TRUE)
+```
+
+### 100% Stacked Area
+
+```{r}
+partial_data <-
+  subset(sales, Owner %in% c("Aperture","Black Mesa"))
+
+dimple(partial_data, xCategory="Month", xOrderRule = "Date", yPct="Unit.Sales", series="Channel", chartType="area", legend=TRUE)
+```
+
+### Grouped Stacked Area
+
+```{r}
+partial_data <-
+  subset(sales, Owner %in% c("Aperture","Black Mesa"))
+
+dimple(partial_data, xCategory=c("Owner","Month"), xOrderRule = "Date", yMeasure="Unit.Sales", series="SKU", chartType="area", legend=TRUE, legendX=430, legendY=20, legendWidth=100, legendHeight=300, legendHorizontalAlign = "left", boundsX=70, boundsY=30, boundsWidth=340, boundsHeight=330, seriesLineWeight = 1, seriesBarGap = 0.05)
+```
+
+## Line Charts
+
+### Single Line
+
+```{r}
+partial_data <-
+  subset(sales, Owner %in% c("Aperture", "Black Mesa"))
+  
+dimple(sales, xCategory="Month", xOrderRule = "Date", yMeasure="Unit.Sales", chartType="line")
+```
+
+### Multiple Line
+
+```{r}
+partial_data <-
+  subset(sales, Owner %in% c("Aperture", "Black Mesa"))
+  
+dimple(partial_data, xCategory="Month", xOrderRule = "Date", yMeasure="Unit.Sales", series="Channel", chartType="line")
+```
+
+### Grouped Single Line
+
+```{r}
+partial_data <-
+  subset(sales, Owner %in% c("Aperture", "Black Mesa"))
+  
+dimple(partial_data, xCategory=c("Owner", "Month"), xGroupOrderRule = "Date", yMeasure="Unit.Sales", series="Owner", chartType="line")
+```
+
+## Ring Charts
+
+### Ring Chart
+
+```{r}
+dimple(sales, pMeasure="Unit.Sales", series="Owner", legend=TRUE, chartType="pie", ringInnerRadius="50%")
+```
+
