@@ -81,6 +81,7 @@ HTMLWidgets.widget({
     if("seriesBarGap" in config) s.barGap = config.seriesBarGap;
     if("piesRadius" in config) s.radius = config.piesRadius;
     if("ringInnerRadius" in config) s.innerRadius = config.ringInnerRadius;
+    if("ringOuterRadius" in config) s.outerRadius = config.ringOuterRadius;
 
 
     if(config.legend === true){

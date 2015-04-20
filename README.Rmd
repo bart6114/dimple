@@ -219,3 +219,8 @@ dimple(partial_data, xCategory=c("Owner", "Month"), xGroupOrderRule = "Date", yM
 dimple(sales, pMeasure="Unit.Sales", series="Owner", legend=TRUE, chartType="pie", ringInnerRadius="50%")
 ```
 
+### Grouped Lollipop Ring
+
+```{r}
+dimple(sales, xCategory=c("Price.Tier","Channel"), yMeasure="Unit.Sales", pMeasure="Unit.Sales", series="Pack.Size", legend=TRUE, chartType="pie", ringInnerRadius=20, ringOuterRadius=30)
+```
