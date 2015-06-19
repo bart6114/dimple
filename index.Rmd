@@ -5,6 +5,8 @@ output:
     theme: flatly
 ---
 
+The ```dimple``` package is a light [htmlwidgets](www.htmlwidgets.org/) wrapper around the [dimple](http://dimplejs.org/) javascript chart library (which is itself a wrapper around [d3.js](http://d3js.org/)).
+
 # Installation
 
 The ```dimple``` package is currently only available by installing from GitHub.
