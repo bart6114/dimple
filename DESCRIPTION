@@ -1,9 +1,9 @@
 Package: dimple
-Title: What the Package Does (one line, title case)
-Version: 0.0.0.9000
-Authors@R: person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph)
+Title: An Htmlwidget To Build Dimple Plots
+Version: 0.1
+Authors@R: person("Bart", "Smeets", , "bartsmeets86@gmail.com", role = c("aut", "cre"))
+Description: An htmlwidget-based package to build dimple plots (dimplejs.org)
 Depends: R (>= 3.1.0)
-License: What license is it under?
+License: MIT
 LazyData: true
 Suggests: testthat
