@@ -1,5 +1,5 @@
 ---
-title: "dimple: dimple plots for R"
+title: "dimple plots for R"
 output: 
   html_document: 
     theme: flatly
