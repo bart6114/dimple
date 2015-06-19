@@ -5,6 +5,10 @@ HTMLWidgets.widget({
   type: 'output',
 
   renderValue: function(el, config, instance) {
+    // hack to avoid duplicates in shiny output
+    while (el.hasChildNodes()) {
+      el.removeChild(el.lastChild);
+    }
 
     var svg = dimple.newSvg(el, config.width, config.height);
     var data = HTMLWidgets.dataframeToD3(config.data);

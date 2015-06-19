@@ -6,4 +6,4 @@ Description: An htmlwidget-based package to build dimple plots (dimplejs.org)
 Depends: R (>= 3.1.0)
 License: MIT
 LazyData: true
-Suggests: testthat
+Suggests: testthat, shiny

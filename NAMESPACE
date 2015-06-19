@@ -2,5 +2,7 @@
 
 export(dimple)
 export(dimpleOutput)
+export(dimple_shiny)
 export(renderdimple)
 import(htmlwidgets)
+import(shiny)
