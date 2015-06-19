@@ -478,3 +478,12 @@ dimple(partial_data,
        seriesLineWeight = 1,
        legend=TRUE)
 ```
+
+# Shiny
+
+You can also use ```dimple``` charts in ```shiny```. There is an example included in the package. Simply run ```dimple_shiny()```. Below you can see the content of the function.
+
+```{r}
+dimple_shiny
+```
+
