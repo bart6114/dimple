@@ -4,16 +4,6 @@ HTMLWidgets.widget({
 
   type: 'output',
 
-  initialize: function(el, width, height) {
-
-
-    return {
-      // TODO: add instance fields as required
-
-    }
-
-  },
-
   renderValue: function(el, config, instance) {
 
     var svg = dimple.newSvg(el, config.width, config.height);
@@ -55,7 +45,7 @@ HTMLWidgets.widget({
     }
 
     if("pMeasure" in config){
-      myChart.addMeasureAxis("p", config.pMeasure)
+      myChart.addMeasureAxis("p", config.pMeasure);
     }
 
     if("zMeasure" in config){
@@ -68,7 +58,9 @@ HTMLWidgets.widget({
       pie: dimple.plot.pie,
       bubble: dimple.plot.bubble,
       area: dimple.plot.area,
-      line: dimple.plot.line
+      line: dimple.plot.line,
+      step: dimple.plot.line,
+      steparea: dimple.plot.area
     };
 
     var chartFunc = chartTypes[config.chartType];
@@ -82,6 +74,9 @@ HTMLWidgets.widget({
     if("piesRadius" in config) s.radius = config.piesRadius;
     if("ringInnerRadius" in config) s.innerRadius = config.ringInnerRadius;
     if("ringOuterRadius" in config) s.outerRadius = config.ringOuterRadius;
+
+    if(config.chartType === "step") s.interpolation = "step";
+    if(config.chartType === "steparea") s.interpolation = "step";
 
 
     if(config.legend === true){

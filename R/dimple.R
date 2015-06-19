@@ -5,9 +5,21 @@
 #' @import htmlwidgets
 #'
 #' @param data a data.frame
+#' @param chartType define type of chart, either one of: bar, line, step, area, steparea, pie, bubble
+#' @param xPct character string of variable to use for a percent x-axis (can be a vector of multiple variables)
+#' @param xMeasure character string of variable to use for a measure x-axis (can be a vector of multiple variables)
+#' @param xCategory character string of variable to use for a category x-axis (can be a vector of multiple variables)
+#' @param yPct character string of variable to use for a percent y-axis (can be a vector of multiple variables)
+#' @param yMeasure character string of variable to use for a measure y-axis (can be a vector of multiple variables)
+#' @param yCategory character string of variable to use for a category y-axis (can be a vector of multiple variables)
+#' @param stacked should data be stacked, defaults to TRUE for bar, area and steparea charts.
+#' @param width width of the chart
+#' @param height height of the chart
+#' @param legend whether to show a legend, defaults to FALSE
+#' @param ... other parameters passed to the dimple function (have a look at the examples)
 #'
 #' @export
-dimple <- function(data, ..., chartType = "bar", stacked = ifelse(chartType %in% c("bar","area"), T, F),
+dimple <- function(data, ..., chartType = "bar", stacked = ifelse(chartType %in% c("bar","area", "steparea"), T, F),
                    width = 590, height = 400) {
 
   config <- list(...)
